@@ -13,6 +13,7 @@
 let secretNumber = Math.trunc(Math.random() * 20) + 1; // gives a random number between 1 and 20
 
 let score = 20;
+let highScore = 0;
 
 document.querySelector(".check").addEventListener("click", function () {
   // document.querySelector(".guess").value; this will give us a string type value always
@@ -26,6 +27,10 @@ document.querySelector(".check").addEventListener("click", function () {
     document.querySelector(".number").textContent = secretNumber;
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").style.width = "30rem";
+    if (score > highScore) {
+      highScore = score;
+      document.querySelector(".highscore").textContent = highScore;
+    }
   } else if (guess > secretNumber) {
     if (score > 1) {
       document.querySelector(".message").textContent = "📈 Too High";
